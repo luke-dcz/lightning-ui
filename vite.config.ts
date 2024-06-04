@@ -10,8 +10,8 @@ export default defineConfig({
 		// library entry and output settings
 		lib: {
 			entry: resolve(__dirname, "lib/main.ts"),
-			name: "me-ui",
-			fileName: "me-ui",
+			name: "lightning-ui",
+			fileName: "lightning-ui",
 		},
 		// bundler options
 		// externalize react-related imports
