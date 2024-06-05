@@ -5,5 +5,5 @@ interface ButtonProps {
 }
 
 export const Button = ({ children }: ButtonProps) => {
-	return <button>{children}</button>
+	return <button className="bg-blue-500">{children}</button>
 }
