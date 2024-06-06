@@ -1,9 +1,21 @@
-import { ReactNode } from "react"
+import { ComponentProps, ReactNode } from "react"
+import { twMerge } from "tailwind-merge";
 
-interface ButtonProps {
+type ButtonProps = {
+	className?: string
 	children: ReactNode;
-}
+} & ComponentProps<'button'>
 
-export const Button = ({ children }: ButtonProps) => {
-	return <button className="bg-blue-500">{children}</button>
+export const Button = ({ className = '', children, ...restprops }: ButtonProps) => {
+	return (
+		<button
+			className={twMerge(
+				'px-4 py-2 rounded-lg bg-default',
+				className
+			)}
+			{...restprops}
+		>
+			{children}
+		</button>
+	)
 }
