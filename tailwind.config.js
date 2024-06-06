@@ -4,7 +4,15 @@ export default {
     "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'default': {
+          light: '#698082',
+          DEFAULT: '#404E4F',
+          dark: '#303a3b'
+        },
+      }
+    },
   },
   plugins: [],
 }
