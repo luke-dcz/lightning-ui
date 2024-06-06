@@ -6,6 +6,8 @@ type ButtonProps = {
 	children: ReactNode;
 } & ComponentProps<'button'>
 
+//TO-DO - Variants prop, size prop, color scheme prop (using predefined color scheme)
+
 export const Button = ({ className = '', children, ...restprops }: ButtonProps) => {
 	return (
 		<button
