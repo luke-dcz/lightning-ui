@@ -5,6 +5,7 @@ import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
+import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
 	build: {
 		// library entry and output settings
 		lib: {
-			entry: resolve(__dirname, "lib/main.ts"),
+			entry: resolve(__dirname, "lib/index.ts"),
 			name: "lightning-ui",
 			fileName: "lightning-ui",
 		},
@@ -34,5 +35,10 @@ export default defineConfig({
 		environment: "jsdom",
 		setupFiles: "./lib/test/setup.ts",
 		css: true 
+	},
+	css: {
+		postcss: {
+			plugins: [tailwindcss]
+		}
 	}
 });
