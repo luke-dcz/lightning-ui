@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div>
-        <Button>Test</Button>
+        <Button className='bg-orange-500'>Test</Button>
       </div>
     </>
   )
