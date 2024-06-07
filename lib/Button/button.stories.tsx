@@ -21,3 +21,10 @@ export const CustomStyles: Story = {
 		className: "bg-pink-500 hover:bg-pink-400"
 	}
 }
+
+export const DisabledButton: Story = {
+	args: {
+		children: "Disabled Button",
+		isDisabled: true
+	}
+}
