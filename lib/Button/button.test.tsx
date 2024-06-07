@@ -8,7 +8,7 @@ describe(`Component: ${Button.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <button
-			    class="px-4 py-2 rounded-lg bg-default text-white hover:bg-default-dark transition-all ease-in-out duration-3 00"
+			    class="px-4 py-2 rounded-lg bg-default text-white hover:bg-default-dark transition-all ease-in-out duration-300"
 			  >
 			    My Button
 			  </button>
