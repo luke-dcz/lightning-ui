@@ -8,7 +8,7 @@ describe(`Component: ${Button.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <button
-			    class="px-4 py-2 bg-default text-white hover:bg-default-dark transition-all ease-in-out duration-300 text-base rounded-md"
+			    class="px-4 py-2 text-white text-base rounded-md transition-all ease-in-out duration-300 bg-default hover:bg-default-dark"
 			  >
 			    My Button
 			  </button>
@@ -68,5 +68,23 @@ describe(`Component: ${Button.name}`, () => {
 			</Button>
 		)
 		expect(screen.getByTestId('disabledButton')).toHaveClass('cursor-not-allowed')
+	})
+
+	it('has a bordered variant', () => {
+		render(
+			<Button data-testid="borderedButton" variant="bordered">
+				Test
+			</Button>
+		)
+		expect(screen.getByTestId('borderedButton')).toHaveClass('border-2 border-default text-default')
+	})
+
+	it('has a ghost variant', () => {
+		render(
+			<Button data-testid="ghostButton" variant="ghost">
+				Test
+			</Button>
+		)
+		expect(screen.getByTestId('ghostButton')).toHaveClass('border-2 border-default text-default hover:bg-default hover:text-white')
 	})
 })
