@@ -57,4 +57,15 @@ describe(`Component: ${Input.name}`, () => {
 		)
 		expect(screen.getByPlaceholderText("Test Placeholder")).toBeInTheDocument()
 	})
+
+	it('has custom styles', () => {
+		render(
+			<Input
+				data-testid="input"
+				name="input"
+				className="bg-red-500"
+			/>
+		)
+		expect(screen.getByTestId('input')).toHaveClass('bg-red-500')
+	})
 })
