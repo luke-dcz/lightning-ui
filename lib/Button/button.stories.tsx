@@ -70,3 +70,17 @@ export const FullBorderRadius: Story = {
 		borderRadius: 'full'
 	}
 }
+
+export const BorderedVariant: Story = {
+	args: {
+		children: "Button",
+		variant: 'bordered'
+	}
+}
+
+export const GhostVariant: Story = {
+	args: {
+		children: "Button",
+		variant: 'ghost'
+	}
+}
