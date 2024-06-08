@@ -35,7 +35,27 @@ export default function MyPage() {
 
 ## Components
 
-- Button
+### Button
+
+Props:
+
+- borderRadius: `none`, `sm`, `base`, `md`, `lg`, `xl`, `full` - change the border radius of the button (optional)
+- className: `string` - add custom styles or override current styles (optional)
+- children: `ReactNode` - render text inside the button
+- isDisabled: `boolean` - disable the button (optional)
+- size: `sm`, `md`, `lg`, `xl` - change the size of the button (optional)
+- variant: `solid`, `bordered`, `ghost` - change the style of the button (optional)
+- default HTML props
+
+### Input
+
+Props:
+
+- className: `string` - add custom styles or override current styles (optional)
+- label: `string` - add a label for the button (option)
+- labelPlacement: `left`, `top` - change the placement of the button (optional)
+- name: `string` - add the HTML name prop to uniquely identify the input
+- placeholder: `string` - add a placeholder to the input (optional)
 
 ## Storybook
 
