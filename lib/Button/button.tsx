@@ -10,10 +10,9 @@ type ButtonProps = {
 	variant?: 'solid' | 'bordered' | 'ghost'
 } & ComponentProps<'button'>
 
-//TO-DO - color scheme prop (using predefined color scheme)
-
 export const Button = ({ borderRadius = 'md', className = '', children, isDisabled = false, size = "md", variant = 'solid', ...restprops }: ButtonProps) => {
 	const disabledStyle = isDisabled && 'cursor-not-allowed'
+
 	const buttonSize =
 		size === 'sm' ? 'text-sm'
 			: size === 'md' ? 'text-base'
