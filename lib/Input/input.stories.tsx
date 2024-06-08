@@ -29,3 +29,9 @@ export const WithPlaceholder: Story = {
 		placeholder: "Enter here"
 	}
 }
+
+export const CustomStyles: Story = {
+	args: {
+		className: 'bg-blue-400 text-white focus:outline-none border-2'
+	}
+}
