@@ -10,7 +10,7 @@ type ButtonProps = {
 	variant?: 'solid' | 'bordered' | 'ghost'
 } & ComponentProps<'button'>
 
-//TO-DO - Variants prop, color scheme prop (using predefined color scheme)
+//TO-DO - color scheme prop (using predefined color scheme)
 
 export const Button = ({ borderRadius = 'md', className = '', children, isDisabled = false, size = "md", variant = 'solid', ...restprops }: ButtonProps) => {
 	const disabledStyle = isDisabled && 'cursor-not-allowed'
@@ -19,6 +19,7 @@ export const Button = ({ borderRadius = 'md', className = '', children, isDisabl
 			: size === 'md' ? 'text-base'
 				: size === 'lg' ? 'text-lg'
 					: 'text-xl'
+
 	const variantStyle =
 		variant === 'solid' ? 'bg-default hover:bg-default-dark'
 			: variant === 'bordered' ? 'border-2 border-default text-default hover:text-default-dark'
@@ -32,7 +33,9 @@ export const Button = ({ borderRadius = 'md', className = '', children, isDisabl
 						: borderRadius === 'lg' ? 'rounded-lg'
 							: borderRadius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
+
 	const transitionStyle = 'transition-all ease-in-out duration-300'
+
 	return (
 		<button
 			className={twMerge(
@@ -40,8 +43,8 @@ export const Button = ({ borderRadius = 'md', className = '', children, isDisabl
 				disabledStyle,
 				buttonSize,
 				radius,
-				variantStyle,
 				transitionStyle,
+				variantStyle,
 				className
 			)}
 			disabled={isDisabled}
