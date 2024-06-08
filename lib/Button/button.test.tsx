@@ -8,7 +8,7 @@ describe(`Component: ${Button.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <button
-			    class="px-4 py-2 rounded-lg bg-default text-white hover:bg-default-dark transition-all ease-in-out duration-300"
+			    class="px-4 py-2 bg-default text-white hover:bg-default-dark transition-all ease-in-out duration-300 text-base rounded-md"
 			  >
 			    My Button
 			  </button>
@@ -41,5 +41,23 @@ describe(`Component: ${Button.name}`, () => {
 		)
 		expect(screen.getByTestId('button2')).toHaveClass('bg-orange-500 rounded-full')
 		expect(screen.getByTestId('button2')).not.toHaveClass('bg-default rounded-lg')
+	})
+
+	it('has applies a border radius', () => {
+		render(
+			<Button data-testid="smallRadius" borderRadius="sm">
+				Test
+			</Button>
+		)
+		expect(screen.getByTestId('smallRadius')).toHaveClass('rounded-sm')
+	})
+
+	it('changes size', () => {
+		render(
+			<Button data-testid="largeButton" size="lg">
+				Test
+			</Button>
+		)
+		expect(screen.getByTestId('largeButton')).toHaveClass('text-lg')
 	})
 })
