@@ -60,4 +60,13 @@ describe(`Component: ${Button.name}`, () => {
 		)
 		expect(screen.getByTestId('largeButton')).toHaveClass('text-lg')
 	})
+
+	it('can be disabled', () => {
+		render(
+			<Button data-testid="disabledButton" isDisabled={true}>
+				Test
+			</Button>
+		)
+		expect(screen.getByTestId('disabledButton')).toHaveClass('cursor-not-allowed')
+	})
 })
