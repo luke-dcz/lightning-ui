@@ -14,3 +14,10 @@ export const Default: Story = {
 		label: 'Label'
 	}
 }
+
+export const LeftLabel: Story = {
+	args: {
+		label: "Label",
+		labelPlacement: 'left'
+	}
+}
