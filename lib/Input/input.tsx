@@ -16,7 +16,9 @@ export const Input = ({ className = '', label, labelPlacement = 'top', name, pla
 
 	return (
 		<div className={labelStyling}>
-			<label htmlFor={name}>{label}</label>
+			{label && (
+				<label htmlFor={name}>{label}</label>
+			)}
 			<input
 				className={twMerge(
 					'border border-black rounded pl-2 py-1',
