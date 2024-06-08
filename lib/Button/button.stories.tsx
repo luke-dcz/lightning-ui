@@ -28,3 +28,45 @@ export const DisabledButton: Story = {
 		isDisabled: true
 	}
 }
+
+export const SmallButton: Story = {
+	args: {
+		children: "Button",
+		size: 'sm'
+	}
+}
+
+export const MediumButton: Story = {
+	args: {
+		children: "Button",
+		size: 'md'
+	}
+}
+
+export const LargeButton: Story = {
+	args: {
+		children: "Button",
+		size: 'lg'
+	}
+}
+
+export const XLargeButton: Story = {
+	args: {
+		children: "Button",
+		size: 'xl'
+	}
+}
+
+export const NoBorderRadius: Story = {
+	args: {
+		children: "Button",
+		borderRadius: 'none'
+	}
+}
+
+export const FullBorderRadius: Story = {
+	args: {
+		children: "Button",
+		borderRadius: 'full'
+	}
+}
