@@ -14,3 +14,17 @@ export const Default: Story = {
 		children: "Chip"
 	}
 }
+
+export const SmallChip: Story = {
+	args: {
+		children: "Chip",
+		size: 'sm'
+	}
+}
+
+export const LargeChip: Story = {
+	args: {
+		children: "Chip",
+		size: 'lg'
+	}
+}
