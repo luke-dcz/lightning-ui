@@ -9,9 +9,10 @@ type InputProps = {
 	labelPlacement?: "left" | "top"
 	name: string;
 	placeholder?: string;
+	variant?: 'solid' | 'bordered' | 'underlined'
 } & ComponentProps<'input'>
 
-export const Input = ({ borderRadius = 'md', className = '', isRequired = false, label, labelPlacement = 'top', name, placeholder, ...restProps }: InputProps) => {
+export const Input = ({ borderRadius = 'md', className = '', isRequired = false, label, labelPlacement = 'top', name, placeholder, variant = 'bordered', ...restProps }: InputProps) => {
 	const labelStyling =
 		labelPlacement === 'top' ? 'flex flex-col'
 			: 'flex items-center gap-x-2'
@@ -24,6 +25,12 @@ export const Input = ({ borderRadius = 'md', className = '', isRequired = false,
 						: borderRadius === 'lg' ? 'rounded-lg'
 							: borderRadius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
+	const variantStyle =
+		variant === 'solid' ? 'bg-default-dark hover:bg-default focus:outline-none'
+			: variant === 'bordered' ? 'border-2 border-default-light dark:border-default hover:border-default hover:border-default-light focus:outline-black dark:focus:outline-white'
+				: 'border-b-2 rounded-none border-default-light dark:border-default hover:border-default hover:border-default-light focus:outline-none focus:border-black dark:focus:border-white'
+
+	const transitionStyle = 'transition-all ease-in-out duration-300'
 
 	return (
 		<div className={labelStyling}>
@@ -35,8 +42,10 @@ export const Input = ({ borderRadius = 'md', className = '', isRequired = false,
 			) : (label && <label htmlFor={name}>{label}</label>)}
 			<input
 				className={twMerge(
-					'border border-black pl-2 py-1',
+					'pl-2 py-1',
 					radius,
+					variantStyle,
+					transitionStyle,
 					className
 				)}
 				id={name}
