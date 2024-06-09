@@ -3,14 +3,15 @@ import { twMerge } from "tailwind-merge";
 
 type InputProps = {
 	borderRadius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
-	className?: string
+	className?: string;
+	isRequired?: boolean;
 	label?: string;
 	labelPlacement?: "left" | "top"
 	name: string;
 	placeholder?: string;
 } & ComponentProps<'input'>
 
-export const Input = ({ borderRadius = 'md', className = '', label, labelPlacement = 'top', name, placeholder, ...restProps }: InputProps) => {
+export const Input = ({ borderRadius = 'md', className = '', isRequired = false, label, labelPlacement = 'top', name, placeholder, ...restProps }: InputProps) => {
 	const labelStyling =
 		labelPlacement === 'top' ? 'flex flex-col'
 			: 'flex items-center gap-x-2'
@@ -26,9 +27,12 @@ export const Input = ({ borderRadius = 'md', className = '', label, labelPlaceme
 
 	return (
 		<div className={labelStyling}>
-			{label && (
-				<label htmlFor={name}>{label}</label>
-			)}
+			{(label && isRequired) ? (
+				<label htmlFor={name}>
+					{label}
+					<span className="text-red-500">*</span>
+				</label>
+			) : (label && <label htmlFor={name}>{label}</label>)}
 			<input
 				className={twMerge(
 					'border border-black pl-2 py-1',
@@ -38,6 +42,7 @@ export const Input = ({ borderRadius = 'md', className = '', label, labelPlaceme
 				id={name}
 				name={name}
 				placeholder={placeholder}
+				required={isRequired}
 				{...restProps}
 			/>
 		</div>
