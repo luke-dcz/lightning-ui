@@ -38,4 +38,15 @@ describe(`Component: ${Chip.name}`, () => {
 		)
 		expect(screen.getByText('Chip').parentElement).toHaveClass('bg-blue-500')
 	})
+
+	it('can have a small size', () => {
+		render(
+			<Chip
+				size="sm"
+			>
+				Chip
+			</Chip>
+		)
+		expect(screen.getByText('Chip').parentElement).toHaveClass('text-sm h-6 px-1')
+	})
 })
