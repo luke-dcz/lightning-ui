@@ -67,3 +67,9 @@ export const UnderlineInputVariant: Story = {
 		variant: 'underlined'
 	}
 }
+
+export const DisabledInput: Story = {
+	args: {
+		isDisabled: true
+	}
+}
