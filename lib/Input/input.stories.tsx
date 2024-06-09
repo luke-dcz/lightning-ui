@@ -38,7 +38,7 @@ export const CustomStyles: Story = {
 
 export const FullBorderRadius: Story = {
 	args: {
-		borderRadius: 'full'
+		radius: 'full'
 	}
 }
 

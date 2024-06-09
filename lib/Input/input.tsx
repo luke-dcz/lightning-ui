@@ -2,7 +2,6 @@ import { ComponentProps } from "react"
 import { twMerge } from "tailwind-merge";
 
 type InputProps = {
-	borderRadius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 	className?: string;
 	isDisabled?: boolean;
 	isRequired?: boolean;
@@ -10,21 +9,22 @@ type InputProps = {
 	labelPlacement?: "left" | "top"
 	name: string;
 	placeholder?: string;
+	radius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 	variant?: 'solid' | 'bordered' | 'underlined'
 } & ComponentProps<'input'>
 
-export const Input = ({ borderRadius = 'md', className = '', isDisabled = false, isRequired = false, label, labelPlacement = 'top', name, placeholder, variant = 'bordered', ...restProps }: InputProps) => {
+export const Input = ({ className = '', isDisabled = false, isRequired = false, label, labelPlacement = 'top', name, placeholder, radius = 'md', variant = 'bordered', ...restProps }: InputProps) => {
 	const labelStyling =
 		labelPlacement === 'top' ? 'flex flex-col'
 			: 'flex items-center gap-x-2'
 
-	const radius =
-		borderRadius === 'none' ? 'rounded-none'
-			: borderRadius === 'sm' ? 'rounded-sm'
-				: borderRadius === 'base' ? 'rounded'
-					: borderRadius === 'md' ? 'rounded-md'
-						: borderRadius === 'lg' ? 'rounded-lg'
-							: borderRadius === 'xl' ? 'rounded-xl'
+	const radiusStyles =
+		radius === 'none' ? 'rounded-none'
+			: radius === 'sm' ? 'rounded-sm'
+				: radius === 'base' ? 'rounded'
+					: radius === 'md' ? 'rounded-md'
+						: radius === 'lg' ? 'rounded-lg'
+							: radius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
 	const variantStyle =
 		variant === 'solid' ? 'bg-default-dark hover:bg-default focus:outline-none'
@@ -47,7 +47,7 @@ export const Input = ({ borderRadius = 'md', className = '', isDisabled = false,
 				className={twMerge(
 					'pl-2 py-1',
 					disabledStyle,
-					radius,
+					radiusStyles,
 					variantStyle,
 					transitionStyle,
 					className

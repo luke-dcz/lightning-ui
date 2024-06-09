@@ -60,14 +60,14 @@ export const XLargeButton: Story = {
 export const NoBorderRadius: Story = {
 	args: {
 		children: "Button",
-		borderRadius: 'none'
+		radius: 'none'
 	}
 }
 
 export const FullBorderRadius: Story = {
 	args: {
 		children: "Button",
-		borderRadius: 'full'
+		radius: 'full'
 	}
 }
 
