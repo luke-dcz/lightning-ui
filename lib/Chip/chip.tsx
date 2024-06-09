@@ -5,10 +5,11 @@ type ChipProps = {
 	children: ReactNode;
 	className?: string;
 	radius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
-	size?: 'sm' | 'md' | 'lg'
+	size?: 'sm' | 'md' | 'lg';
+	variant?: 'solid' | 'bordered';
 }
 
-export const Chip = ({ children, className = '', radius = "full", size = 'md' }: ChipProps) => {
+export const Chip = ({ children, className = '', radius = "full", size = 'md', variant = 'solid' }: ChipProps) => {
 	const radiusStyles =
 		radius === 'none' ? 'rounded-none'
 			: radius === 'sm' ? 'rounded-sm'
@@ -22,12 +23,17 @@ export const Chip = ({ children, className = '', radius = "full", size = 'md' }:
 		: size === 'md' ? 'text-base h-7 px-1'
 			: 'text-lg h-8 px-2'
 
+	const variantStyle =
+		variant === 'solid' ? 'bg-default text-white'
+			: 'border-2 border-default text-default'
+
 	return (
 		<div
 			className={twMerge(
-				'flex bg-default text-white items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap',
+				'flex items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap',
 				sizeStyle,
 				radiusStyles,
+				variantStyle,
 				className
 			)}
 		>
