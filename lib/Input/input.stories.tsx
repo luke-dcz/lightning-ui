@@ -35,3 +35,9 @@ export const CustomStyles: Story = {
 		className: 'bg-blue-400 text-white focus:outline-none border-2'
 	}
 }
+
+export const FullBorderRadius: Story = {
+	args: {
+		borderRadius: 'full'
+	}
+}
