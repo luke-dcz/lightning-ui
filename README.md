@@ -51,6 +51,7 @@ Props:
 
 Props:
 
+- borderRadius: `none`, `sm`, `base`, `md`, `lg`, `xl`, `full` - change the border radius of the input (optional)
 - className: `string` - add custom styles or override current styles (optional)
 - label: `string` - add a label for the button (option)
 - labelPlacement: `left`, `top` - change the placement of the button (optional)
