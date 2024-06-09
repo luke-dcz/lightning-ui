@@ -49,3 +49,21 @@ export const IsRequiredInput: Story = {
 		isRequired: true
 	}
 }
+
+export const SolidInputVariant: Story = {
+	args: {
+		variant: 'solid'
+	}
+}
+
+export const BorderedInputVariant: Story = {
+	args: {
+		variant: 'bordered'
+	}
+}
+
+export const UnderlineInputVariant: Story = {
+	args: {
+		variant: 'underlined'
+	}
+}
