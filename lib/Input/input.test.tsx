@@ -11,11 +11,8 @@ describe(`Component: ${Input.name}`, () => {
 			  <div
 			    class="flex flex-col"
 			  >
-			    <label
-			      for="input"
-			    />
 			    <input
-			      class="border border-black rounded pl-2 py-1"
+			      class="border border-black pl-2 py-1 rounded-md"
 			      id="input"
 			      name="input"
 			    />
@@ -67,5 +64,16 @@ describe(`Component: ${Input.name}`, () => {
 			/>
 		)
 		expect(screen.getByTestId('input')).toHaveClass('bg-red-500')
+	})
+
+	it('can change the border radius', () => {
+		render(
+			<Input
+				borderRadius="full"
+				data-testid="input"
+				name="input"
+			/>
+		)
+		expect(screen.getByTestId('input')).toHaveClass('rounded-full')
 	})
 })
