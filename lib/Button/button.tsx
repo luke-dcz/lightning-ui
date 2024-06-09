@@ -2,15 +2,15 @@ import { ComponentProps, ReactNode } from "react"
 import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
-	borderRadius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 	className?: string
 	children: ReactNode;
 	isDisabled?: boolean;
+	radius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 	size?: "sm" | "md" | "lg" | "xl";
 	variant?: 'solid' | 'bordered' | 'ghost'
 } & ComponentProps<'button'>
 
-export const Button = ({ borderRadius = 'md', className = '', children, isDisabled = false, size = "md", variant = 'solid', ...restprops }: ButtonProps) => {
+export const Button = ({ className = '', children, isDisabled = false, radius = 'md', size = "md", variant = 'solid', ...restprops }: ButtonProps) => {
 	const disabledStyle = isDisabled && 'cursor-not-allowed'
 
 	const buttonSize =
@@ -24,13 +24,13 @@ export const Button = ({ borderRadius = 'md', className = '', children, isDisabl
 			: variant === 'bordered' ? 'border-2 border-default text-default hover:text-default-dark'
 				: 'border-2 border-default text-default hover:bg-default hover:text-white'
 
-	const radius =
-		borderRadius === 'none' ? 'rounded-none'
-			: borderRadius === 'sm' ? 'rounded-sm'
-				: borderRadius === 'base' ? 'rounded'
-					: borderRadius === 'md' ? 'rounded-md'
-						: borderRadius === 'lg' ? 'rounded-lg'
-							: borderRadius === 'xl' ? 'rounded-xl'
+	const radiusStyles =
+		radius === 'none' ? 'rounded-none'
+			: radius === 'sm' ? 'rounded-sm'
+				: radius === 'base' ? 'rounded'
+					: radius === 'md' ? 'rounded-md'
+						: radius === 'lg' ? 'rounded-lg'
+							: radius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
 
 	const transitionStyle = 'transition-all ease-in-out duration-300'
@@ -41,7 +41,7 @@ export const Button = ({ borderRadius = 'md', className = '', children, isDisabl
 				'px-4 py-2 text-white',
 				disabledStyle,
 				buttonSize,
-				radius,
+				radiusStyles,
 				transitionStyle,
 				variantStyle,
 				className

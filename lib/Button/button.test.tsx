@@ -45,7 +45,7 @@ describe(`Component: ${Button.name}`, () => {
 
 	it('has applies a border radius', () => {
 		render(
-			<Button data-testid="smallRadius" borderRadius="sm">
+			<Button data-testid="smallRadius" radius="sm">
 				Test
 			</Button>
 		)

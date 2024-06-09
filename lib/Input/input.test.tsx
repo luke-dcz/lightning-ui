@@ -69,7 +69,7 @@ describe(`Component: ${Input.name}`, () => {
 	it('can change the border radius', () => {
 		render(
 			<Input
-				borderRadius="full"
+				radius="full"
 				data-testid="input"
 				name="input"
 			/>
