@@ -7,7 +7,7 @@ describe(`Component: ${Chip.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <div
-			    class="flex bg-default text-white rounded-full items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap text-base h-7 px-1"
+			    class="flex bg-default text-white items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap text-base h-7 px-1 rounded-full"
 			  >
 			    <span
 			      class="flex text-inherit font-light px-2"
@@ -48,5 +48,16 @@ describe(`Component: ${Chip.name}`, () => {
 			</Chip>
 		)
 		expect(screen.getByText('Chip').parentElement).toHaveClass('text-sm h-6 px-1')
+	})
+
+	it('can have a different radius', () => {
+		render(
+			<Chip
+				radius="sm"
+			>
+				Chip
+			</Chip>
+		)
+		expect(screen.getByText('Chip').parentElement).toHaveClass('rounded-sm')
 	})
 })
