@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 type InputProps = {
 	borderRadius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 	className?: string;
+	isDisabled?: boolean;
 	isRequired?: boolean;
 	label?: string;
 	labelPlacement?: "left" | "top"
@@ -12,7 +13,7 @@ type InputProps = {
 	variant?: 'solid' | 'bordered' | 'underlined'
 } & ComponentProps<'input'>
 
-export const Input = ({ borderRadius = 'md', className = '', isRequired = false, label, labelPlacement = 'top', name, placeholder, variant = 'bordered', ...restProps }: InputProps) => {
+export const Input = ({ borderRadius = 'md', className = '', isDisabled = false, isRequired = false, label, labelPlacement = 'top', name, placeholder, variant = 'bordered', ...restProps }: InputProps) => {
 	const labelStyling =
 		labelPlacement === 'top' ? 'flex flex-col'
 			: 'flex items-center gap-x-2'
@@ -32,6 +33,8 @@ export const Input = ({ borderRadius = 'md', className = '', isRequired = false,
 
 	const transitionStyle = 'transition-all ease-in-out duration-300'
 
+	const disabledStyle = isDisabled && 'cursor-not-allowed'
+
 	return (
 		<div className={labelStyling}>
 			{(label && isRequired) ? (
@@ -43,11 +46,13 @@ export const Input = ({ borderRadius = 'md', className = '', isRequired = false,
 			<input
 				className={twMerge(
 					'pl-2 py-1',
+					disabledStyle,
 					radius,
 					variantStyle,
 					transitionStyle,
 					className
 				)}
+				disabled={isDisabled}
 				id={name}
 				name={name}
 				placeholder={placeholder}

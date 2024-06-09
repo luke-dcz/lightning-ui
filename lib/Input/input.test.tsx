@@ -111,4 +111,15 @@ describe(`Component: ${Input.name}`, () => {
 		)
 		expect(screen.getByTestId('input')).toHaveClass('border-b-2')
 	})
+
+	it('can be disabled', () => {
+		render(
+			<Input
+				data-testid="input"
+				name="input"
+				isDisabled={true}
+			/>
+		)
+		expect(screen.getByTestId('input')).toHaveClass('cursor-not-allowed')
+	})
 })
