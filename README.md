@@ -53,10 +53,13 @@ Props:
 
 - borderRadius: `none`, `sm`, `base`, `md`, `lg`, `xl`, `full` - change the border radius of the input (optional)
 - className: `string` - add custom styles or override current styles (optional)
+- isDisabled: `boolean` - disable the input (optional)
+- isRequired: `boolean` - makes the input required (optional)
 - label: `string` - add a label for the button (option)
 - labelPlacement: `left`, `top` - change the placement of the button (optional)
 - name: `string` - add the HTML name prop to uniquely identify the input
 - placeholder: `string` - add a placeholder to the input (optional)
+- variant: `solid`, `bordered`, `underlined` - change the style of the input (optional)
 
 ## Storybook
 
