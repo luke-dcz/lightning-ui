@@ -28,3 +28,17 @@ export const LargeChip: Story = {
 		size: 'lg'
 	}
 }
+
+export const NoRadius: Story = {
+	args: {
+		children: "Chip",
+		radius: "none"
+	}
+}
+
+export const MediumRadius: Story = {
+	args: {
+		children: "Chip",
+		radius: "md"
+	}
+}
