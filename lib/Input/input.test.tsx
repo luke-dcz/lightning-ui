@@ -12,7 +12,7 @@ describe(`Component: ${Input.name}`, () => {
 			    class="flex flex-col"
 			  >
 			    <input
-			      class="border border-black pl-2 py-1 rounded-md"
+			      class="pl-2 py-1 rounded-md border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white transition-all ease-in-out duration-300"
 			      id="input"
 			      name="input"
 			    />
@@ -88,5 +88,27 @@ describe(`Component: ${Input.name}`, () => {
 			/>
 		)
 		expect(screen.getByText('*')).toBeInTheDocument()
+	})
+
+	it('has a solid variant', () => {
+		render(
+			<Input
+				data-testid="input"
+				name="input"
+				variant="solid"
+			/>
+		)
+		expect(screen.getByTestId('input')).toHaveClass('bg-default-dark hover:bg-default focus:outline-none')
+	})
+
+	it('has an underlined variant', () => {
+		render(
+			<Input
+				data-testid="input"
+				name="input"
+				variant="underlined"
+			/>
+		)
+		expect(screen.getByTestId('input')).toHaveClass('border-b-2')
 	})
 })
