@@ -42,3 +42,10 @@ export const MediumRadius: Story = {
 		radius: "md"
 	}
 }
+
+export const BorderedVariantChip: Story = {
+	args: {
+		children: "Chip",
+		variant: "bordered"
+	}
+}
