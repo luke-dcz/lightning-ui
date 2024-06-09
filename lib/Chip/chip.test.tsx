@@ -7,7 +7,7 @@ describe(`Component: ${Chip.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <div
-			    class="flex bg-default text-white items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap text-base h-7 px-1 rounded-full"
+			    class="flex items-center justify-center min-w-min max-w-fit relative box-border whitespace-nowrap text-base h-7 px-1 rounded-full bg-default text-white"
 			  >
 			    <span
 			      class="flex text-inherit font-light px-2"
@@ -59,5 +59,16 @@ describe(`Component: ${Chip.name}`, () => {
 			</Chip>
 		)
 		expect(screen.getByText('Chip').parentElement).toHaveClass('rounded-sm')
+	})
+
+	it('has a bordered variant', () => {
+		render(
+			<Chip
+				variant="bordered"
+			>
+				Chip
+			</Chip>
+		)
+		expect(screen.getByText('Chip').parentElement).toHaveClass('border-default text-default')
 	})
 })
