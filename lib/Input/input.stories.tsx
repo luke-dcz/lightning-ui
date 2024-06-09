@@ -41,3 +41,11 @@ export const FullBorderRadius: Story = {
 		borderRadius: 'full'
 	}
 }
+
+export const IsRequiredInput: Story = {
+	args: {
+		label: "Email",
+		labelPlacement: "left",
+		isRequired: true
+	}
+}
