@@ -76,4 +76,17 @@ describe(`Component: ${Input.name}`, () => {
 		)
 		expect(screen.getByTestId('input')).toHaveClass('rounded-full')
 	})
+
+	it('can be made required', () => {
+		render(
+			<Input
+				data-testid="input"
+				name="input"
+				label="Label"
+				labelPlacement="left"
+				isRequired
+			/>
+		)
+		expect(screen.getByText('*')).toBeInTheDocument()
+	})
 })
