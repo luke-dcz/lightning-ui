@@ -71,6 +71,15 @@ Props:
 - size: `sm`, `md`, `lg`, `xl` - change the size of the chip (optional)
 - variant: `solid`, `bordered` - change the style of the chip (optional)
 
+### Select
+
+Props:
+
+- options: `{
+  value: string;
+  label: string;
+}[]` - add the various options to select from
+
 ## Storybook
 
 // To do
