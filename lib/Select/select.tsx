@@ -25,7 +25,7 @@ export const Select = ({ options }: SelectProps) => {
 
 	return (
 		<div className="flex flex-col min-w-fit max-w-fit gap-1">
-			<div className="flex items-center h-6 border px-2 py-5 hover:cursor-pointer" onClick={() => toggleShowOptions()}>
+			<div className="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer" onClick={() => toggleShowOptions()}>
 				<div className="flex justify-between items-center gap-2">
 					{selectedOption === '' ? (
 						<p className="text-slate-700">Select Value</p>
@@ -39,19 +39,19 @@ export const Select = ({ options }: SelectProps) => {
 							</div>
 						</div>
 					)}
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down" viewBox="0 0 16 16">
-						<path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down text-default" viewBox="0 0 16 16" strokeWidth="1" stroke="black">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
 					</svg>
 				</div>
 			</div>
 			<div className={twMerge(
-				'flex flex-col px-2 border',
+				'flex flex-col px-2 border rounded',
 				optionsStyle
 			)}>
 				{options.map((item) => (
 					<p key={item.value} onClick={() => handleSelectOption(item.label)}>{item.label}</p>
 				))}
 			</div>
-		</div>
+		</div >
 	)
 }

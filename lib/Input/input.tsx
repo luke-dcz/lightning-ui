@@ -28,8 +28,8 @@ export const Input = ({ className = '', isDisabled = false, isRequired = false, 
 								: 'rounded-full'
 	const variantStyle =
 		variant === 'solid' ? 'bg-default-dark hover:bg-default focus:outline-none'
-			: variant === 'bordered' ? 'border-2 border-default-light dark:border-default hover:border-default hover:border-default-light focus:outline-black dark:focus:outline-white'
-				: 'border-b-2 rounded-none border-default-light dark:border-default hover:border-default hover:border-default-light focus:outline-none focus:border-black dark:focus:border-white'
+			: variant === 'bordered' ? 'border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white'
+				: 'border-b-2 rounded-none border-default-light dark:border-default hover:border-default-light focus:outline-none focus:border-black dark:focus:border-white'
 
 	const transitionStyle = 'transition-all ease-in-out duration-300'
 
