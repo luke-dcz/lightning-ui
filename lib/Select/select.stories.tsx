@@ -18,3 +18,36 @@ export const Default: Story = {
 		]
 	}
 }
+
+export const CustomLabel: Story = {
+	args: {
+		options: [
+			{ value: 'cat', label: 'Cat' },
+			{ value: 'dog', label: 'Dog' },
+			{ value: 'wolf', label: 'Wolf' },
+			{ value: 'fish', label: 'Fish' },
+			{ value: 'elephant', label: 'Elephant' },
+			{ value: 'lion', label: 'Lion' },
+			{ value: 'tiger', label: 'Tiger' },
+			{ value: 'leopard', label: 'Leopard' },
+		],
+		label: 'Animals'
+	}
+}
+
+export const MultipleOptions: Story = {
+	args: {
+		options: [
+			{ value: 'cat', label: 'Cat' },
+			{ value: 'dog', label: 'Dog' },
+			{ value: 'wolf', label: 'Wolf' },
+			{ value: 'fish', label: 'Fish' },
+			{ value: 'elephant', label: 'Elephant' },
+			{ value: 'lion', label: 'Lion' },
+			{ value: 'tiger', label: 'Tiger' },
+			{ value: 'leopard', label: 'Leopard' },
+		],
+		label: 'Animals',
+		multipleOptions: true
+	}
+}
