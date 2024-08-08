@@ -1,6 +1,5 @@
 import { Variants, motion } from 'framer-motion';
 import { useState } from "react";
-import { twMerge } from "tailwind-merge";
 
 type SelectProps = {
 	options: {
@@ -21,11 +20,11 @@ const itemVariants: Variants = {
 };
 
 export const Select = ({ label = "Select Value", multipleOptions = false, options }: SelectProps) => {
-	const [showOptions, setShowOptions] = useState(false)
+	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
 	const toggleShowOptions = () => {
-		setShowOptions(!showOptions)
+		setIsOpen(!isOpen)
 	}
 
 
@@ -36,7 +35,7 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 			)
 		} else {
 			setSelectedOptions([value])
-			setShowOptions(false)
+			setIsOpen(false)
 		}
 	}
 
@@ -49,11 +48,12 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 		)
 	}
 
-	const optionsStyle = showOptions ? 'flex' : 'hidden'
-
 	return (
-		<motion.div initial={false} animate={showOptions ? "open" : "closed"} className="flex flex-col min-w-fit max-w-fit gap-1">
-			<button className="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer" onClick={() => toggleShowOptions()}>
+		<motion.div
+			initial={false}
+			animate={isOpen ? "open" : "closed"}
+			className="flex flex-col min-w-fit max-w-fit gap-1">
+			<motion.button whileTap={{ scale: 0.97 }} className="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer" onClick={() => toggleShowOptions()}>
 				<div className="flex justify-between items-center gap-2">
 					{selectedOptions.length === 0 ? (
 						<p className="text-slate-700">{label}</p>
@@ -84,12 +84,9 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 						</svg>
 					</motion.div>
 				</div>
-			</button>
-			<motion.ul className={twMerge(
-				'flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default',
-				optionsStyle
-			)
-			}
+			</motion.button>
+			<motion.ul
+				className='flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default'
 				variants={{
 					open: {
 						clipPath: "inset(0% 0% 0% 0% round 2px)",
@@ -110,10 +107,17 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 						}
 					}
 				}}
-				style={{ pointerEvents: showOptions ? "auto" : "none" }}
+				style={{ pointerEvents: isOpen ? "auto" : "none" }}
 			>
 				{options.map((item) => (
-					<motion.li className='px-2 rounded cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-all ease-in-out duration-150' variants={itemVariants} key={item.value} onClick={() => handleSelectOptions(item.label)}>{item.label}</motion.li>
+					<motion.li
+						className='px-2 rounded cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600'
+						variants={itemVariants}
+						key={item.value}
+						onClick={() => handleSelectOptions(item.label)}
+					>
+						{item.label}
+					</motion.li>
 				))}
 			</motion.ul>
 		</motion.div >
