@@ -121,4 +121,35 @@ describe(`Component: ${Select.name}`, () => {
 		expect(screen.getByText('Option 1')).toBeInTheDocument()
 		expect(screen.getByText('Option 1')).toBeInTheDocument()
 	})
+
+	it('can select options', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+			/>
+		)
+		fireEvent.click(screen.getByTestId('select-container'))
+		fireEvent.click(screen.getByText('Option 1'))
+		expect(screen.getByTestId('Selected-Option 1')).toBeInTheDocument()
+	})
+	it('can remove the selected option', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+			/>
+		)
+		fireEvent.click(screen.getByTestId('select-container'))
+		fireEvent.click(screen.getByText('Option 2'))
+		expect(screen.getByTestId('Selected-Option 2')).toBeInTheDocument()
+		fireEvent.click(screen.getByTestId('cross-svg'))
+		expect(screen.queryByTestId('Selected-Option 2')).not.toBeInTheDocument()
+	})
 })
