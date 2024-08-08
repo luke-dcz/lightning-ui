@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Select } from './select';
 
 describe(`Component: ${Select.name}`, () => {
@@ -19,6 +19,7 @@ describe(`Component: ${Select.name}`, () => {
 			  >
 			    <button
 			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer"
+			      data-testid="select-container"
 			      tabindex="0"
 			    >
 			      <div
@@ -103,5 +104,21 @@ describe(`Component: ${Select.name}`, () => {
 			/>
 		)
 		expect(screen.getByText('Animals')).toBeInTheDocument()
+	})
+
+	it('can display the options', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+			/>
+		)
+		fireEvent.click(screen.getByTestId('select-container'))
+		expect(screen.getByText('Option 1')).toBeInTheDocument()
+		expect(screen.getByText('Option 1')).toBeInTheDocument()
+		expect(screen.getByText('Option 1')).toBeInTheDocument()
 	})
 })
