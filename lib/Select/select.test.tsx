@@ -133,9 +133,12 @@ describe(`Component: ${Select.name}`, () => {
 			/>
 		)
 		fireEvent.click(screen.getByTestId('select-container'))
+		expect(screen.queryByTestId('Selected-Option 1')).not.toBeInTheDocument()
 		fireEvent.click(screen.getByText('Option 1'))
 		expect(screen.getByTestId('Selected-Option 1')).toBeInTheDocument()
+		expect(screen.queryByTestId('Selected-Option 2')).not.toBeInTheDocument()
 	})
+
 	it('can remove the selected option', () => {
 		render(
 			<Select
@@ -149,7 +152,27 @@ describe(`Component: ${Select.name}`, () => {
 		fireEvent.click(screen.getByTestId('select-container'))
 		fireEvent.click(screen.getByText('Option 2'))
 		expect(screen.getByTestId('Selected-Option 2')).toBeInTheDocument()
-		fireEvent.click(screen.getByTestId('cross-svg'))
+		fireEvent.click(screen.getByTestId('Option 2-cross-svg'))
 		expect(screen.queryByTestId('Selected-Option 2')).not.toBeInTheDocument()
+	})
+
+	it('can select multiple options', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				multipleOptions={true}
+			/>
+		)
+		fireEvent.click(screen.getByTestId('select-container'))
+		fireEvent.click(screen.getByText('Option 1'))
+		fireEvent.click(screen.getByText('Option 2'))
+		fireEvent.click(screen.getByText('Option 3'))
+		expect(screen.getByTestId('Selected-Option 1')).toBeInTheDocument()
+		expect(screen.getByTestId('Selected-Option 2')).toBeInTheDocument()
+		expect(screen.getByTestId('Selected-Option 3')).toBeInTheDocument()
 	})
 })
