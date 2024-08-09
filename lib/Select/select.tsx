@@ -1,13 +1,15 @@
 import { Variants, motion } from 'framer-motion';
 import { useState } from "react";
+import { twMerge } from 'tailwind-merge';
 
 type SelectProps = {
+	label?: string
+	multipleOptions?: boolean
 	options: {
 		value: string;
 		label: string
 	}[]
-	label?: string
-	multipleOptions?: boolean
+	radius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
 }
 
 const itemVariants: Variants = {
@@ -19,7 +21,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ label = "Select Value", multipleOptions = false, options }: SelectProps) => {
+export const Select = ({ label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -48,6 +50,15 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 		)
 	}
 
+	const radiusStyles =
+		radius === 'none' ? 'rounded-none'
+			: radius === 'sm' ? 'rounded-sm'
+				: radius === 'base' ? 'rounded'
+					: radius === 'md' ? 'rounded-md'
+						: radius === 'lg' ? 'rounded-lg'
+							: radius === 'xl' ? 'rounded-xl'
+								: 'rounded-full'
+
 	return (
 		<motion.div
 			initial={false}
@@ -55,7 +66,10 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 			className="flex flex-col min-w-36 max-w-fit gap-1">
 			<motion.button
 				whileTap={{ scale: 0.97 }}
-				className="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer"
+				className={twMerge(
+					'flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 hover:cursor-pointer',
+					radiusStyles
+				)}
 				onClick={() => toggleShowOptions()}
 				data-testid="select-container"
 			>
