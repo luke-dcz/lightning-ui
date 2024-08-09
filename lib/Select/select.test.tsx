@@ -18,26 +18,23 @@ describe(`Component: ${Select.name}`, () => {
 			    class="flex flex-col min-w-36 max-w-fit gap-1"
 			  >
 			    <button
-			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 rounded-md"
+			      class="flex items-center h-6 px-2 py-5 rounded-md border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white"
 			      data-testid="select-container"
 			      tabindex="0"
 			    >
 			      <div
 			        class="flex w-full justify-between items-center gap-2"
 			      >
-			        <p
-			          class="text-slate-700"
-			        >
+			        <p>
 			          Select Value
 			        </p>
 			        <div
 			          style="transform: none; transform-origin: 50% 55.00000000000001% 0;"
 			        >
 			          <svg
-			            class="bi bi-chevron-down text-default"
-			            fill="currentColor"
+			            class="bi bi-chevron-down"
 			            height="16"
-			            stroke="black"
+			            stroke="currentColor"
 			            stroke-width="1"
 			            viewBox="0 0 16 16"
 			            width="16"
