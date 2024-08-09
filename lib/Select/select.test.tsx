@@ -203,4 +203,18 @@ describe(`Component: ${Select.name}`, () => {
 		)
 		expect(screen.getByTestId('select-container')).toHaveClass('cursor-not-allowed')
 	})
+
+	it('can be required', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				isRequired={true}
+			/>
+		)
+		expect(screen.getByText('*')).toBeInTheDocument()
+	})
 })
