@@ -26,6 +26,7 @@ export const Input = ({ className = '', isDisabled = false, isRequired = false, 
 						: radius === 'lg' ? 'rounded-lg'
 							: radius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
+
 	const variantStyle =
 		variant === 'solid' ? 'bg-default-dark hover:bg-default focus:outline-none'
 			: variant === 'bordered' ? 'border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white'
