@@ -95,3 +95,25 @@ export const RequiredSelect: Story = {
 		isRequired: true
 	}
 }
+
+export const SolidVariant: Story = {
+	args: {
+		options: [
+			{ value: 'option1', label: 'Option 1' },
+			{ value: 'option2', label: 'Option 2' },
+			{ value: 'option3', label: 'Option 3' },
+		],
+		variant: 'solid'
+	}
+}
+
+export const UnderlinedVariant: Story = {
+	args: {
+		options: [
+			{ value: 'option1', label: 'Option 1' },
+			{ value: 'option2', label: 'Option 2' },
+			{ value: 'option3', label: 'Option 3' },
+		],
+		variant: 'underlined'
+	}
+}
