@@ -77,7 +77,7 @@ describe(`Component: ${Input.name}`, () => {
 		expect(screen.getByTestId('input')).toHaveClass('rounded-full')
 	})
 
-	it('can be made required', () => {
+	it('can be required', () => {
 		render(
 			<Input
 				data-testid="input"
