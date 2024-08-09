@@ -18,7 +18,7 @@ describe(`Component: ${Select.name}`, () => {
 			    class="flex flex-col min-w-36 max-w-fit gap-1"
 			  >
 			    <button
-			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 hover:cursor-pointer rounded-md"
+			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 rounded-md"
 			      data-testid="select-container"
 			      tabindex="0"
 			    >
@@ -53,7 +53,7 @@ describe(`Component: ${Select.name}`, () => {
 			    </button>
 			    <ul
 			      class="flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default"
-			      style="pointer-events: none; clip-path: inset(10% 50% 90% 50% round 2px);"
+			      style="clip-path: inset(10% 50% 90% 50% round 2px);"
 			    >
 			      <li
 			        class="px-2 rounded cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600"
@@ -188,5 +188,19 @@ describe(`Component: ${Select.name}`, () => {
 			/>
 		)
 		expect(screen.getByTestId('select-container')).toHaveClass('rounded-full')
+	})
+
+	it('can be disabled', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				isDisabled={true}
+			/>
+		)
+		expect(screen.getByTestId('select-container')).toHaveClass('cursor-not-allowed')
 	})
 })
