@@ -3,6 +3,7 @@ import { useState } from "react";
 import { twMerge } from 'tailwind-merge';
 
 type SelectProps = {
+	isDisabled?: boolean;
 	label?: string
 	multipleOptions?: boolean
 	options: {
@@ -21,7 +22,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
+export const Select = ({ isDisabled = false, label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -59,19 +60,29 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 							: radius === 'xl' ? 'rounded-xl'
 								: 'rounded-full'
 
+	const disabledStyle = isDisabled && 'cursor-not-allowed'
+
 	return (
 		<motion.div
 			initial={false}
 			animate={isOpen ? "open" : "closed"}
-			className="flex flex-col min-w-36 max-w-fit gap-1">
+			className={twMerge(
+				"flex flex-col min-w-36 max-w-fit gap-1",
+				disabledStyle
+			)}
+
+		>
 			<motion.button
 				whileTap={{ scale: 0.97 }}
 				className={twMerge(
-					'flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 hover:cursor-pointer',
+					'flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5',
+					disabledStyle,
 					radiusStyles
+
 				)}
 				onClick={() => toggleShowOptions()}
 				data-testid="select-container"
+				disabled={isDisabled}
 			>
 				<div className="flex w-full justify-between items-center gap-2">
 					{selectedOptions.length === 0 ? (
@@ -126,7 +137,6 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 						}
 					}
 				}}
-				style={{ pointerEvents: isOpen ? "auto" : "none" }}
 			>
 				{options.map((item) => (
 					<motion.li
