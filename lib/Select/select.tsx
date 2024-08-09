@@ -12,6 +12,7 @@ type SelectProps = {
 		label: string
 	}[]
 	radius?: "none" | "sm" | "base" | "md" | "lg" | "xl" | "full";
+	variant?: 'solid' | 'bordered' | 'underlined'
 }
 
 const itemVariants: Variants = {
@@ -23,7 +24,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
+export const Select = ({ isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md', variant = 'bordered' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -63,6 +64,11 @@ export const Select = ({ isDisabled = false, isRequired = false, label = "Select
 
 	const disabledStyle = isDisabled && 'cursor-not-allowed'
 
+	const variantStyle =
+		variant === 'solid' ? 'bg-default-dark text-white hover:bg-default focus:outline-none'
+			: variant === 'bordered' ? 'border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white'
+				: 'border-b-2 rounded-none border-default-light dark:border-default hover:border-default-light focus:outline-none focus:border-black dark:focus:border-white'
+
 	return (
 		<motion.div
 			initial={false}
@@ -76,9 +82,10 @@ export const Select = ({ isDisabled = false, isRequired = false, label = "Select
 			<motion.button
 				whileTap={{ scale: 0.97 }}
 				className={twMerge(
-					'flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5',
+					'flex items-center h-6 px-2 py-5',
 					disabledStyle,
-					radiusStyles
+					radiusStyles,
+					variantStyle
 
 				)}
 				onClick={() => toggleShowOptions()}
@@ -87,7 +94,7 @@ export const Select = ({ isDisabled = false, isRequired = false, label = "Select
 			>
 				<div className="flex w-full justify-between items-center gap-2">
 					{selectedOptions.length === 0 ? (
-						<p className="text-slate-700">
+						<p>
 							{label}
 							{isRequired && (
 								<span className="text-red-500">*</span>
@@ -115,7 +122,7 @@ export const Select = ({ isDisabled = false, isRequired = false, label = "Select
 						transition={{ duration: 0.2 }}
 						style={{ originY: 0.55 }}
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down text-default" viewBox="0 0 16 16" strokeWidth="1" stroke="black">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" stroke='currentColor' className="bi bi-chevron-down" viewBox="0 0 16 16" strokeWidth="1" >
 							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
 						</svg>
 					</motion.div>
