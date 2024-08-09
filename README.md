@@ -54,7 +54,7 @@ Props:
 - className: `string` - add custom styles or override current styles (optional)
 - isDisabled: `boolean` - disable the input (optional)
 - isRequired: `boolean` - makes the input required (optional)
-- label: `string` - add a label for the button (option)
+- label: `string` - add a label for the input (optional)
 - labelPlacement: `left`, `top` - change the placement of the button (optional)
 - name: `string` - add the HTML name prop to uniquely identify the input
 - placeholder: `string` - add a placeholder to the input (optional)
@@ -75,10 +75,16 @@ Props:
 
 Props:
 
+- isDisabled: `boolean` - disable the select (optional)
+- isRequired: `boolean` - makes the select required (optional)
+- label: `string` - add a label for the select (optional)
+  -multipleOptions: `boolean` - allows the user to select multiple options (optional)
 - options: `{
   value: string;
   label: string;
 }[]` - add the various options to select from
+- radius: `none`, `sm`, `base`, `md`, `lg`, `xl`, `full` - change the border radius of the select (optional)
+- variant: `solid`, `bordered` - change the style of the select (optional)
 
 ## Storybook
 
