@@ -52,14 +52,14 @@ export const Select = ({ label = "Select Value", multipleOptions = false, option
 		<motion.div
 			initial={false}
 			animate={isOpen ? "open" : "closed"}
-			className="flex flex-col min-w-fit max-w-fit gap-1">
+			className="flex flex-col min-w-36 max-w-fit gap-1">
 			<motion.button
 				whileTap={{ scale: 0.97 }}
 				className="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer"
 				onClick={() => toggleShowOptions()}
 				data-testid="select-container"
 			>
-				<div className="flex justify-between items-center gap-2">
+				<div className="flex w-full justify-between items-center gap-2">
 					{selectedOptions.length === 0 ? (
 						<p className="text-slate-700">{label}</p>
 					) : (
