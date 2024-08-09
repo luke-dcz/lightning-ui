@@ -4,6 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 type SelectProps = {
 	isDisabled?: boolean;
+	isRequired?: boolean;
 	label?: string
 	multipleOptions?: boolean
 	options: {
@@ -22,7 +23,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ isDisabled = false, label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
+export const Select = ({ isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -86,7 +87,12 @@ export const Select = ({ isDisabled = false, label = "Select Value", multipleOpt
 			>
 				<div className="flex w-full justify-between items-center gap-2">
 					{selectedOptions.length === 0 ? (
-						<p className="text-slate-700">{label}</p>
+						<p className="text-slate-700">
+							{label}
+							{isRequired && (
+								<span className="text-red-500">*</span>
+							)}
+						</p>
 					) : (
 						<>
 							{selectedOptions.map((item, index) => (
