@@ -214,4 +214,32 @@ describe(`Component: ${Select.name}`, () => {
 		)
 		expect(screen.getByText('*')).toBeInTheDocument()
 	})
+
+	it('has a solid variant', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				variant='solid'
+			/>
+		)
+		expect(screen.getByTestId('select-container')).toHaveClass('bg-default-dark hover:bg-default focus:outline-none')
+	})
+
+	it('has a underlined variant', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				variant='underlined'
+			/>
+		)
+		expect(screen.getByTestId('select-container')).toHaveClass('border-b-2')
+	})
 })
