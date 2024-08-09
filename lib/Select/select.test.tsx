@@ -15,15 +15,15 @@ describe(`Component: ${Select.name}`, () => {
 		expect(container).toMatchInlineSnapshot(`
 			<div>
 			  <div
-			    class="flex flex-col min-w-fit max-w-fit gap-1"
+			    class="flex flex-col min-w-36 max-w-fit gap-1"
 			  >
 			    <button
-			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white rounded px-2 py-5 hover:cursor-pointer"
+			      class="flex items-center h-6 border-2 border-default-light dark:border-default hover:border-default-light focus:outline-black dark:focus:outline-white px-2 py-5 hover:cursor-pointer rounded-md"
 			      data-testid="select-container"
 			      tabindex="0"
 			    >
 			      <div
-			        class="flex justify-between items-center gap-2"
+			        class="flex w-full justify-between items-center gap-2"
 			      >
 			        <p
 			          class="text-slate-700"
@@ -174,5 +174,19 @@ describe(`Component: ${Select.name}`, () => {
 		expect(screen.getByTestId('Selected-Option 1')).toBeInTheDocument()
 		expect(screen.getByTestId('Selected-Option 2')).toBeInTheDocument()
 		expect(screen.getByTestId('Selected-Option 3')).toBeInTheDocument()
+	})
+
+	it('can change the border radius', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				radius='full'
+			/>
+		)
+		expect(screen.getByTestId('select-container')).toHaveClass('rounded-full')
 	})
 })
