@@ -3,6 +3,7 @@ import { useState } from "react";
 import { twMerge } from 'tailwind-merge';
 
 type SelectProps = {
+	className?: string;
 	isDisabled?: boolean;
 	isRequired?: boolean;
 	label?: string
@@ -24,7 +25,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md', variant = 'bordered' }: SelectProps) => {
+export const Select = ({ className = '', isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md', variant = 'bordered' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -85,7 +86,8 @@ export const Select = ({ isDisabled = false, isRequired = false, label = "Select
 					'flex items-center h-6 px-2 py-5',
 					disabledStyle,
 					radiusStyles,
-					variantStyle
+					variantStyle,
+					className
 
 				)}
 				onClick={() => toggleShowOptions()}
