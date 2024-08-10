@@ -50,6 +50,7 @@ describe(`Component: ${Select.name}`, () => {
 			    </button>
 			    <ul
 			      class="flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default"
+			      data-testid="select-listbox"
 			      style="clip-path: inset(10% 50% 90% 50% round 2px);"
 			    >
 			      <li
@@ -241,5 +242,21 @@ describe(`Component: ${Select.name}`, () => {
 			/>
 		)
 		expect(screen.getByTestId('select-container')).toHaveClass('border-b-2')
+	})
+
+	it('can have custom styles', () => {
+		render(
+			<Select
+				options={[
+					{ value: 'option1', label: 'Option 1' },
+					{ value: 'option2', label: 'Option 2' },
+					{ value: 'option3', label: 'Option 3' }
+				]}
+				containerStyles='bg-pink-400'
+				listBoxStyles='bg-red-100'
+			/>
+		)
+		expect(screen.getByTestId('select-container')).toHaveClass('bg-pink-400')
+		expect(screen.getByTestId('select-listbox')).toHaveClass('bg-red-100')
 	})
 })

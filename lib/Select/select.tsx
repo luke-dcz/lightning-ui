@@ -156,6 +156,7 @@ export const Select = ({ containerStyles = '', isDisabled = false, isRequired = 
 						}
 					}
 				}}
+				data-testid='select-listbox'
 			>
 				{options.map((item) => (
 					<motion.li
