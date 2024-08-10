@@ -75,9 +75,11 @@ Props:
 
 Props:
 
+- containerStyles: `string` - add custom styles to the main container (optional)
 - isDisabled: `boolean` - disable the select (optional)
 - isRequired: `boolean` - makes the select required (optional)
 - label: `string` - add a label for the select (optional)
+- listBoxStyles: `string` - add custom styles to the listbox (optional)
   -multipleOptions: `boolean` - allows the user to select multiple options (optional)
 - options: `{
   value: string;
