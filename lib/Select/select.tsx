@@ -3,10 +3,11 @@ import { useState } from "react";
 import { twMerge } from 'tailwind-merge';
 
 type SelectProps = {
-	className?: string;
+	containerStyles?: string;
 	isDisabled?: boolean;
 	isRequired?: boolean;
-	label?: string
+	label?: string;
+	listBoxStyles?: string;
 	multipleOptions?: boolean
 	options: {
 		value: string;
@@ -25,7 +26,7 @@ const itemVariants: Variants = {
 	closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-export const Select = ({ className = '', isDisabled = false, isRequired = false, label = "Select Value", multipleOptions = false, options, radius = 'md', variant = 'bordered' }: SelectProps) => {
+export const Select = ({ containerStyles = '', isDisabled = false, isRequired = false, label = "Select Value", listBoxStyles = '', multipleOptions = false, options, radius = 'md', variant = 'bordered' }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -87,7 +88,7 @@ export const Select = ({ className = '', isDisabled = false, isRequired = false,
 					disabledStyle,
 					radiusStyles,
 					variantStyle,
-					className
+					containerStyles
 
 				)}
 				onClick={() => toggleShowOptions()}
@@ -131,7 +132,10 @@ export const Select = ({ className = '', isDisabled = false, isRequired = false,
 				</div>
 			</motion.button>
 			<motion.ul
-				className='flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default'
+				className={twMerge(
+					'flex flex-col px-1 py-1 border-2 rounded border-default-light dark:border-default',
+					listBoxStyles
+				)}
 				variants={{
 					open: {
 						clipPath: "inset(0% 0% 0% 0% round 2px)",
